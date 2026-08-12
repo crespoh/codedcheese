@@ -1,10 +1,10 @@
 const PrivacyPolicy = () => {
   return (
-    <section className="py-16 md:py-24 bg-gray-light">
+    <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto bg-gray-light p-8 rounded-2xl shadow-[8px_8px_16px_#d1d1d1,-8px_-8px_16px_#ffffff]">
+        <div className="max-w-2xl mx-auto bg-surface border border-line rounded-2xl p-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">Privacy Policy for Spelling App</h1>
-          <p className="text-sm text-muted-foreground mb-8">Last updated: 2025-05-23</p>
+          <p className="text-sm text-ink-soft mb-8">Last updated: 2025-05-23</p>
 
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="text-lg mb-6">Your privacy is important to us. Spelling App does <b>not</b> collect, store, or transmit any personal data. All data you create remains on your device and is not shared with anyone. No analytics or tracking is performed.</p>
@@ -24,8 +24,8 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
           <p className="text-lg mb-2">If you have any questions about this Privacy Policy, please contact us at:</p>
           <ul className="text-lg mb-2 list-disc list-inside">
-            <li>Email: <a href="mailto:info@codedcheese.com" className="text-cheese underline">info@codedcheese.com</a></li>
-            <li>Website: <a href="https://www.codedcheese.com" className="text-cheese underline">https://www.codedcheese.com</a></li>
+            <li>Email: <a href="mailto:info@codedcheese.com" className="text-brand-ink underline">info@codedcheese.com</a></li>
+            <li>Website: <a href="https://www.codedcheese.com" className="text-brand-ink underline">https://www.codedcheese.com</a></li>
           </ul>
         </div>
       </div>

@@ -1,17 +1,17 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import AppsSection from "@/components/AppsSection";
 import AboutUs from "@/components/AboutUs";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-paper text-ink">
       <Header />
       <main className="flex-grow">
         <Hero />
+        <AppsSection />
         <AboutUs />
-        <ContactSection />
       </main>
       <Footer />
     </div>

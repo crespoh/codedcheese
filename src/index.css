@@ -111,10 +111,34 @@
   }
 }
 
-.cheese-shadow {
-  box-shadow: 0 10px 15px -3px rgba(249, 217, 35, 0.2), 0 4px 6px -2px rgba(249, 217, 35, 0.1);
+/* ---------- Brand tokens (marketing site) ---------- */
+
+:root {
+  --paper: #F4F4F1;
+  --surface: #FFFFFF;
+  --ink: #242420;
+  --ink-soft: #6B6A61;
+  --accent: #EFB520;
+  --accent-ink: #251D06;
+  --line: #E1E0D7;
+  --line-strong: #CDCCC0;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 
-.cheese-gradient {
-  background: linear-gradient(135deg, #FFF7D6 0%, #F9D923 100%);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1A1A17;
+    --surface: #232320;
+    --ink: #F2F1E9;
+    --ink-soft: #9C9B8F;
+    --accent: #F5C242;
+    --accent-ink: #1C1608;
+    --line: #34332C;
+    --line-strong: #45443C;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
