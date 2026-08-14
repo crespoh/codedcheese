@@ -23,7 +23,7 @@ const apps: AppEntry[] = [
     status: "In review",
     statusActive: true,
     description:
-      "Snap a photo of your kid's school spelling list and the words go straight in — no retyping. English and Chinese, spoken aloud, in a distraction-free interface.",
+      "Snap a photo of your kid's school spelling list and the words go straight in — no retyping. English and Chinese 听写 for ages 7–12, spoken aloud in a distraction-free app.",
     tags: ["iOS", "education", "kids"],
   },
 ];
