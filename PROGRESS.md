@@ -91,9 +91,10 @@ The site now links to the **SG storefront** canonical URL.
   all 404. Confirmed intentional. If that ever widens, switch the `href` in
   `AppsSection.tsx` to the country-less `https://apps.apple.com/app/id6746328054`,
   which auto-routes each visitor to their own storefront.
-- **Listing metadata says English only** (`languageCodesISO2A: ['EN']`) despite
-  the Chinese 听写 support — worth adding Chinese in App Store Connect, since the
-  markets it's live in are exactly the ones that would search for it in Chinese.
+- **App Store listing work belongs in the `SpellingApp` repo, not here** — see
+  its `APP_STORE_READINESS.md` → "Post-launch". That's where the open Chinese
+  listing localization is tracked, along with what was already verified on the
+  live listing (Chinese keywords are present; Promotional Text is filled).
 - **The origin story is still unpublished.** The "every week my daughter's school
   sends home a spelling list, and every app made me retype it" copy is the most
   persuasive thing written about the app and lives nowhere on the site. It's
