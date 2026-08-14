@@ -70,8 +70,8 @@ export default {
 					soft: 'var(--ink-soft)'
 				},
 				brand: {
-					DEFAULT: 'var(--accent)',
-					ink: 'var(--accent-ink)'
+					DEFAULT: 'var(--brand)',
+					ink: 'var(--brand-ink)'
 				},
 				line: {
 					DEFAULT: 'var(--line)',
