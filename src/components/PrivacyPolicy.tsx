@@ -24,8 +24,8 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
           <p className="text-lg mb-2">If you have any questions about this Privacy Policy, please contact us at:</p>
           <ul className="text-lg mb-2 list-disc list-inside">
-            <li>Email: <a href="mailto:info@codedcheese.com" className="text-brand-ink underline">info@codedcheese.com</a></li>
-            <li>Website: <a href="https://www.codedcheese.com" className="text-brand-ink underline">https://www.codedcheese.com</a></li>
+            <li>Email: <a href="mailto:info@codedcheese.com" className="underline decoration-brand decoration-2 underline-offset-2 hover:text-ink-soft transition-colors">info@codedcheese.com</a></li>
+            <li>Website: <a href="https://www.codedcheese.com" className="underline decoration-brand decoration-2 underline-offset-2 hover:text-ink-soft transition-colors">https://www.codedcheese.com</a></li>
           </ul>
         </div>
       </div>

@@ -90,8 +90,11 @@
     @apply border-border;
   }
 
+  /* Themed tokens, not the shadcn ones: --background/--foreground only switch
+     on a .dark class that nothing applies, so a page that doesn't set its own
+     colours would otherwise render dark-on-dark under prefers-color-scheme. */
   body {
-    @apply bg-background text-foreground;
+    @apply bg-paper text-ink;
   }
 
   h1, h2, h3, h4, h5, h6 {
