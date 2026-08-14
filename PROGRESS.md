@@ -21,6 +21,7 @@ branch and built on it.
 | `d6c325b` | Fixed the magic-link callback race |
 | `bbb93da` | Header theme toggle |
 | — | SpellingAssist copy now leads with the photo-of-the-list hook |
+| — | Fixed the apex domain at Namecheap (DNS, no commit) — `codedcheese.com` resolves again |
 
 ### Notes on the less obvious ones
 
@@ -59,6 +60,18 @@ the OS *both ways*: `@media (dark) { :root:not([data-theme="light"]) }` plus
 `:root[data-theme="dark"]`. Without the `:not()` guard, forcing light on a
 dark-mode device silently does nothing.
 
+**Apex domain (DNS, no commit).** `codedcheese.com` had stopped resolving —
+`NOERROR` with zero address records, so the bare domain was dead while `www`
+(and therefore every deploy check) was fine. The cause was **not** a missing
+record: the ALIAS row at Namecheap had Host `codedcheese.com` instead of `@`,
+and **Namecheap appends the domain to whatever is in that field**, so it had
+built `codedcheese.com.codedcheese.com` — a working record at a name nobody
+visits. Changing the Host to `@` was the entire fix; the target
+(`apex-loadbalancer.netlify.com`) was correct all along. Apex now returns
+`301 → www`, and the Zoho MX/SPF records are unaffected because ALIAS is
+flattened rather than a true CNAME. This also explains the old intermittent
+apex-TLS symptom recorded in `SpellingApp/APP_STORE_READINESS.md`.
+
 ---
 
 ## Next up
@@ -69,36 +82,7 @@ browser (expired fragment, no session, seeded valid session), and the mechanism
 was checked against the library source, but an actual email round trip was not
 possible. Request a link, click it, confirm you land on `/app`.
 
-### 2. `codedcheese.com` (bare domain) is dead — DNS, not code
-Verified 2026-08-14 against the system resolver, `8.8.8.8` and `1.1.1.1`:
-
-```
-dig +short codedcheese.com A      -> (nothing)
-dig +short codedcheese.com AAAA   -> (nothing)   CNAME/ALIAS/ANAME too
-curl -I https://codedcheese.com   -> fails, cannot resolve
-curl -I https://www.codedcheese.com -> 200
-```
-
-The apex returns `NOERROR` with **zero address records**, so anyone typing
-`codedcheese.com` without the `www` gets nothing at all. `www` is unaffected —
-it CNAMEs to `codedcheese.netlify.app` and serves fine, which is why this
-hasn't shown up in any deploy check.
-
-This is a **regression**. On 2026-08-09 the apex had two A records —
-`75.2.60.5` (Netlify, correct) and `216.24.57.1` (Render, stale) — and served a
-clean `301 → www`. It looks like both were removed while clearing the stale
-Render one, rather than just the Render one.
-
-Fix at the registrar, not in this repo: DNS is on **Namecheap**
-(`dns1/dns2.registrar-servers.com`). Re-add Netlify's apex record — either the
-A record `75.2.60.5` or, better, Netlify's ALIAS/CNAME target
-`codedcheese.netlify.app` if Namecheap's ALIAS record supports it. Then confirm
-the `301 → www` comes back and that only one host answers.
-
-Worth checking the App Store listing's Support/Marketing URLs too, in case
-either points at the bare domain.
-
-### 3. `supabaseClient.ts:10` — env vars can white-screen the whole site
+### 2. `supabaseClient.ts:10` — env vars can white-screen the whole site
 `createClient` runs at module top level with no guard. supabase-js throws
 `supabaseUrl is required.` on a falsy URL, and this module is imported
 transitively from `main.tsx` — so if `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`
@@ -106,13 +90,13 @@ ever go missing from the Netlify build env, the marketing pages go blank too,
 not just auth. Both vars *are* currently set (verified in the live bundle).
 Fix: lazy-init, or render a fallback instead of throwing.
 
-### 4. `RequireAuth.tsx:19` — protected content paints before the redirect
+### 3. `RequireAuth.tsx:19` — protected content paints before the redirect
 Once `loading` is false it returns `children` unconditionally; the redirect
 happens afterwards in `useAuthGuard`'s effect (`useAuthGuard.ts:10`). `/app`
 renders for one frame for signed-out visitors. Low impact today (AppHome only
 shows a null user) but it's the wrong shape for a guard — gate on `session` too.
 
-### 5. Spelling Assist launch follow-ups
+### 4. Spelling Assist launch follow-ups
 Released 2026-08-14, Apple ID `6746328054`, free, Education, 4+, iOS 17.6+.
 The site now links to the **SG storefront** canonical URL.
 
@@ -129,7 +113,7 @@ The site now links to the **SG storefront** canonical URL.
   persuasive thing written about the app and lives nowhere on the site. It's
   what a `/apps/spelling-assist` detail page would be for.
 
-### 6. Smaller / optional
+### 5. Smaller / optional
 - **Privacy policy content** — headed "Privacy Policy for Spelling App" but linked
   as the site-wide policy, and it's what the App Store listing would point at.
   Decide: site-wide, or one per app.
