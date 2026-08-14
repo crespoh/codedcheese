@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import Logo from "@/components/Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,10 +17,9 @@ const Header = () => {
   return (
     <header className="border-b border-line">
       <div className="container mx-auto px-4 py-5 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2.5 font-display font-bold text-xl text-ink">
-          <span className="h-3.5 w-3.5 bg-brand" style={{ clipPath: 'polygon(0 0, 100% 50%, 0 100%)' }} />
-          Coded Cheese
-        </a>
+        <Link to="/" className="text-logo hover:opacity-80 transition-opacity">
+          <Logo className="h-7 w-auto md:h-8" />
+        </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {navLinks}

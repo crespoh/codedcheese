@@ -113,29 +113,34 @@
 
 /* ---------- Brand tokens (marketing site) ---------- */
 
+/* Neutrals are warmed to sit with the logo, which is drawn in #7C5755 on a
+   #F8F2E7 cream. --logo carries that brown in light mode and a lightened tint
+   of the same hue in dark mode, where the original only reaches 2.8:1. */
 :root {
-  --paper: #F4F4F1;
-  --surface: #FFFFFF;
-  --ink: #242420;
-  --ink-soft: #6B6A61;
+  --paper: #F8F2E7;
+  --surface: #FFFDF8;
+  --ink: #3A2A28;
+  --ink-soft: #7C5755;
+  --logo: #7C5755;
   --brand: #EFB520;
   --brand-ink: #251D06;
-  --line: #E1E0D7;
-  --line-strong: #CDCCC0;
+  --line: #E5DBC9;
+  --line-strong: #D2C4AC;
 
   --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #1A1A17;
-    --surface: #232320;
-    --ink: #F2F1E9;
-    --ink-soft: #9C9B8F;
+    --paper: #1C1917;
+    --surface: #262220;
+    --ink: #F5EFE4;
+    --ink-soft: #B39B97;
+    --logo: #BDA09E;
     --brand: #F5C242;
     --brand-ink: #1C1608;
-    --line: #34332C;
-    --line-strong: #45443C;
+    --line: #37302C;
+    --line-strong: #4A413C;
   }
 }
 

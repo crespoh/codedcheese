@@ -73,6 +73,7 @@ export default {
 					DEFAULT: 'var(--brand)',
 					ink: 'var(--brand-ink)'
 				},
+				logo: 'var(--logo)',
 				line: {
 					DEFAULT: 'var(--line)',
 					strong: 'var(--line-strong)'
