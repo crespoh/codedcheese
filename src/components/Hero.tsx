@@ -7,8 +7,8 @@ const Hero = () => {
             I make small, useful apps — and this is where they'll live.
           </h1>
           <p className="text-ink-soft text-lg max-w-prose">
-            Two are in the works right now: a screen-time app for co-parenting, and a spelling app for kids.
-            Nothing's shipped yet, but they're close.
+            The first one's out: Spelling Assist, for school spelling tests in English and Chinese.
+            A screen-time app for co-parenting is close behind.
           </p>
         </div>
       </div>

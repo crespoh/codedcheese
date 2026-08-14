@@ -18,23 +18,37 @@ const apps: AppEntry[] = [
     tags: ["iOS", "Screen Time", "family"],
   },
   {
-    name: "SpellingAssist",
+    name: "Spelling Assist",
     icon: "/apps/spellingassist.png",
-    status: "In review",
+    status: "Out now",
     statusActive: true,
     description:
       "Snap a photo of your kid's school spelling list and the words go straight in — no retyping. English and Chinese 听写 for ages 7–12, spoken aloud in a distraction-free app.",
     tags: ["iOS", "education", "kids"],
+    // Storefront-specific by design: the app is released to SG/MY/HK/TW/CN
+    // only, so the country-less URL would 404 for most visitors.
+    href: "https://apps.apple.com/sg/app/spelling-assist/id6746328054",
   },
 ];
 
 const AppsSection = () => {
+  // Derived so the count can't drift as apps ship: anything with a store link
+  // is out, the rest are still being built.
+  const shipped = apps.filter((app) => app.href).length;
+  const building = apps.length - shipped;
+  const summary = [
+    shipped ? `${shipped} out` : null,
+    building ? `${building} in the works` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   return (
     <section id="apps" className="border-b border-line py-12 md:py-16">
       <div className="container mx-auto px-4">
         <div className="flex items-baseline justify-between gap-3 mb-6">
           <h2 className="font-display text-2xl font-bold">Apps</h2>
-          <span className="font-mono text-xs text-ink-soft whitespace-nowrap">{apps.length} in progress</span>
+          <span className="font-mono text-xs text-ink-soft whitespace-nowrap">{summary}</span>
         </div>
 
         <div>

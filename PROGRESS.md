@@ -83,7 +83,23 @@ happens afterwards in `useAuthGuard`'s effect (`useAuthGuard.ts:10`). `/app`
 renders for one frame for signed-out visitors. Low impact today (AppHome only
 shows a null user) but it's the wrong shape for a guard — gate on `session` too.
 
-### 4. Smaller / optional
+### 4. Spelling Assist launch follow-ups
+Released 2026-08-14, Apple ID `6746328054`, free, Education, 4+, iOS 17.6+.
+The site now links to the **SG storefront** canonical URL.
+
+- **Availability is SG / MY / HK / TW / CN only.** US, GB, AU, CA, JP, IN, DE
+  all 404. Confirmed intentional. If that ever widens, switch the `href` in
+  `AppsSection.tsx` to the country-less `https://apps.apple.com/app/id6746328054`,
+  which auto-routes each visitor to their own storefront.
+- **Listing metadata says English only** (`languageCodesISO2A: ['EN']`) despite
+  the Chinese 听写 support — worth adding Chinese in App Store Connect, since the
+  markets it's live in are exactly the ones that would search for it in Chinese.
+- **The origin story is still unpublished.** The "every week my daughter's school
+  sends home a spelling list, and every app made me retype it" copy is the most
+  persuasive thing written about the app and lives nowhere on the site. It's
+  what a `/apps/spelling-assist` detail page would be for.
+
+### 5. Smaller / optional
 - **Privacy policy content** — headed "Privacy Policy for Spelling App" but linked
   as the site-wide policy, and it's what the App Store listing would point at.
   Decide: site-wide, or one per app.
