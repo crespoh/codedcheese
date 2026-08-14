@@ -11,11 +11,20 @@ export default {
 	],
 	prefix: "",
 	theme: {
+		// Single-column editorial layout: text measures top out around 576px, so
+		// the container is capped at 896px to keep the section rules and row
+		// dividers close to the copy. Every breakpoint is listed because the
+		// container defaults each one to the breakpoint's own width -- setting
+		// only '2xl' would leave it wider at 1280px than at 1600px.
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1rem',
 			screens: {
-				'2xl': '1400px'
+				sm: '640px',
+				md: '768px',
+				lg: '896px',
+				xl: '896px',
+				'2xl': '896px'
 			}
 		},
 		extend: {
@@ -74,6 +83,7 @@ export default {
 					ink: 'var(--brand-ink)'
 				},
 				logo: 'var(--logo)',
+				danger: 'var(--danger)',
 				line: {
 					DEFAULT: 'var(--line)',
 					strong: 'var(--line-strong)'

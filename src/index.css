@@ -124,6 +124,7 @@
   --logo: #7C5755;
   --brand: #EFB520;
   --brand-ink: #251D06;
+  --danger: #A3342A;
   --line: #E5DBC9;
   --line-strong: #D2C4AC;
 
@@ -139,6 +140,7 @@
     --logo: #BDA09E;
     --brand: #F5C242;
     --brand-ink: #1C1608;
+    --danger: #E8A99F;
     --line: #37302C;
     --line-strong: #4A413C;
   }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import AuthLayout from "@/components/AuthLayout";
 
 export default function AuthCallback() {
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ export default function AuthCallback() {
         }
         // After finalizing session, go to protected area
         if (isMounted) navigate("/app", { replace: true });
-      } catch (e: any) {
-        setError(e?.message ?? "Authentication failed. Please try again.");
+      } catch (e) {
+        const detail = e instanceof Error ? e.message : null;
+        setError(detail ?? "Authentication failed. Please try again.");
       }
     }
     finalize();
@@ -31,25 +33,29 @@ export default function AuthCallback() {
 
   if (error) {
     return (
-      <div style={{ display: "grid", placeItems: "center", minHeight: "60vh" }}>
-        <div>
-          <h1>Authentication error</h1>
-          <p>{error}</p>
-          <p>
-            <a href="/login">Try again</a>
+      <AuthLayout>
+        <div className="max-w-sm">
+          <h1 className="font-display text-2xl font-bold mb-2">Authentication error</h1>
+          <p className="rounded-md border border-danger/40 px-3 py-2 text-sm text-danger mb-6">
+            {error}
           </p>
+          <Link
+            to="/login"
+            className="inline-block rounded-md bg-brand px-4 py-2 font-medium text-brand-ink transition-opacity hover:opacity-90"
+          >
+            Try again
+          </Link>
         </div>
-      </div>
+      </AuthLayout>
     );
   }
 
   return (
-    <div style={{ display: "grid", placeItems: "center", minHeight: "60vh" }}>
-      <div>
-        <h1>Signing you in…</h1>
-        <p>Please wait while we complete your login.</p>
+    <AuthLayout>
+      <div className="max-w-sm">
+        <h1 className="font-display text-2xl font-bold mb-2">Signing you in…</h1>
+        <p className="text-ink-soft">Please wait while we complete your login.</p>
       </div>
-    </div>
+    </AuthLayout>
   );
 }
-

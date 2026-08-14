@@ -1,16 +1,24 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
+import { useAuth } from "@/auth/AuthProvider";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { session } = useAuth();
+
+  // The header now renders on the signed-in pages too, so this link has to
+  // follow the session rather than always inviting the user to sign in.
+  const accountLink = session
+    ? { to: "/app", label: "your app →" }
+    : { to: "/login", label: "sign in →" };
 
   const navLinks = (
     <>
       <a href="/#apps" className="text-ink-soft hover:text-ink transition-colors" onClick={() => setIsMenuOpen(false)}>Apps</a>
       <a href="/#about" className="text-ink-soft hover:text-ink transition-colors" onClick={() => setIsMenuOpen(false)}>About</a>
       <a href="/#contact" className="text-ink-soft hover:text-ink transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</a>
-      <Link to="/login" className="font-mono text-sm text-ink-soft hover:text-ink transition-colors" onClick={() => setIsMenuOpen(false)}>sign in →</Link>
+      <Link to={accountLink.to} className="font-mono text-sm text-ink-soft hover:text-ink transition-colors" onClick={() => setIsMenuOpen(false)}>{accountLink.label}</Link>
     </>
   );
 
