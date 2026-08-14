@@ -8,6 +8,19 @@
     <meta name="description" content="Small, useful apps, built and shipped by one dev." />
     <meta name="author" content="Coded Cheese" />
 
+    <!-- Apply a stored theme choice before first paint, otherwise a visitor who
+         picked dark on a light-mode device sees a cream flash on every load.
+         Key must match THEME_STORAGE_KEY in src/components/ThemeToggle.tsx. -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+          if (t === 'dark') document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    </script>
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/favicon.svg" />

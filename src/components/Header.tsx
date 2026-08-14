@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useAuth } from "@/auth/AuthProvider";
 
 const Header = () => {
@@ -29,21 +30,27 @@ const Header = () => {
           <Logo className="h-7 w-auto md:h-8" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {navLinks}
-        </nav>
+        {/* The toggle sits outside the collapsible nav so it stays reachable on
+            mobile without opening the menu. */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            {navLinks}
+          </nav>
 
-        <button
-          className="md:hidden h-9 w-9 flex items-center justify-center text-ink"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? (
-            <span className="text-xl leading-none">&times;</span>
-          ) : (
-            <span className="text-xl leading-none">&#9776;</span>
-          )}
-        </button>
+          <ThemeToggle />
+
+          <button
+            className="md:hidden h-9 w-9 flex items-center justify-center text-ink"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <span className="text-xl leading-none">&times;</span>
+            ) : (
+              <span className="text-xl leading-none">&#9776;</span>
+            )}
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (

@@ -134,8 +134,13 @@
   --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 
+/* Dark palette, in three states so the header toggle can override the OS in
+   both directions: the media query covers "OS says dark and the visitor has
+   not forced light", the attribute rule covers "visitor forced dark". Values
+   are repeated because CSS can't share a declaration block across a media
+   query boundary -- keep the two lists in sync. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #1C1917;
     --surface: #262220;
     --ink: #F5EFE4;
@@ -147,6 +152,19 @@
     --line: #37302C;
     --line-strong: #4A413C;
   }
+}
+
+:root[data-theme="dark"] {
+  --paper: #1C1917;
+  --surface: #262220;
+  --ink: #F5EFE4;
+  --ink-soft: #B39B97;
+  --logo: #BDA09E;
+  --brand: #F5C242;
+  --brand-ink: #1C1608;
+  --danger: #E8A99F;
+  --line: #37302C;
+  --line-strong: #4A413C;
 }
 
 .font-display {
