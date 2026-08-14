@@ -1,6 +1,6 @@
 # Progress — 2026-08-14
 
-**Live:** https://www.codedcheese.com · **`main` at `bbb93da`**, in sync with origin, tree clean.
+**Live:** https://www.codedcheese.com · `main` in sync with origin, tree clean.
 
 Everything below is deployed and verified live.
 
@@ -20,6 +20,7 @@ branch and built on it.
 | `33fdd3e` | Fixed unreadable privacy text (dark-on-dark) |
 | `d6c325b` | Fixed the magic-link callback race |
 | `bbb93da` | Header theme toggle |
+| — | SpellingAssist copy now leads with the photo-of-the-list hook |
 
 ### Notes on the less obvious ones
 

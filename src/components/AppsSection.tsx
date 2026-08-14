@@ -23,7 +23,7 @@ const apps: AppEntry[] = [
     status: "In review",
     statusActive: true,
     description:
-      "Spelling and dictation practice for kids 7–12 — English mode and Chinese 听写 mode, add words with the camera, practice out loud.",
+      "Snap a photo of your kid's school spelling list and the words go straight in — no retyping. English and Chinese, spoken aloud, in a distraction-free interface.",
     tags: ["iOS", "education", "kids"],
   },
 ];
