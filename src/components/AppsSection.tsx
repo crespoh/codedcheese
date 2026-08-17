@@ -10,8 +10,8 @@ type AppEntry = {
 
 const apps: AppEntry[] = [
   {
-    name: "Balanzu",
-    icon: "/apps/balanzu.png",
+    name: "Anchor Family",
+    icon: "/apps/anchorfamily.png",
     status: "Coming soon",
     description:
       "A screen-time app for co-parenting: your kid asks to unlock a shielded app, any linked parent can approve it from a push notification, first response wins.",
